@@ -25,7 +25,7 @@ class EntityDataset:
             input_len = len(inputs)
             ids.extend(inputs)
             target_pos.extend([pos[i]] * input_len)
-            target_tag.extend([tags[i] * input_len])
+            target_tag.extend([tags[i]] * input_len)
 
             # Removing 2 elements from each list to add [CLS] & [SEP]
             ids        = ids[:config.MAX_LEN - 2]
@@ -43,9 +43,11 @@ class EntityDataset:
 
             ids = ids + ([0] * padding_len)
             mask = mask + ([0] * padding_len)
-            token_type_ids =token_type_ids + ([0] * padding_len)
+            token_type_ids = token_type_ids + ([0] * padding_len)
             target_pos = target_pos + ([0] * padding_len)
             target_tag = target_tag + ([0] * padding_len)
+
+            #print("len(ids) ",len(ids), " len(mask) ",len(mask), " len(token_type_ids) ",len(token_type_ids), " len(target_pos) ",len(target_pos), " len(target_tag) ",len(target_tag))
 
             return {
                 "ids" : torch.tensor(ids, dtype=torch.long),

@@ -10,7 +10,7 @@ def process_data(data_path):
     enc_tag = preprocessing.LabelEncoder()
 
     df.loc[:, "POS"] = enc_pos.fit_transform(df["POS"])
-    df.loc[:, "Tag"] = enc_pos.fit_transform(df["Tag"])
+    df.loc[:, "Tag"] = enc_tag.fit_transform(df["Tag"])
 
     sentences = df.groupby("Sentence #")["Word"].apply(list).values
     pos       = df.groupby("Sentence #")["POS"].apply(list).values

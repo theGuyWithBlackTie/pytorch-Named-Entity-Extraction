@@ -23,7 +23,7 @@ class EntityModel(nn.Module):
         tag = self.out_tag(tag_dropout)
         pos = self.out_pos(pos_dropout)
 
-        loss_tag = loss_fn(tag, target_pos, mask, self.num_tag)
+        loss_tag = loss_fn(tag, target_tag, mask, self.num_tag)
         loss_pos = loss_fn(pos, target_pos, mask, self.num_pos)
 
         loss = (loss_tag + loss_pos) / 2
