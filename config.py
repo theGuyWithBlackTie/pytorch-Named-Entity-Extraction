@@ -1,3 +1,4 @@
+DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 MAX_LEN          = 128
 TRAIN_BATCH_SIZE = 32
 VALID_BATCH_SIZE = 8
